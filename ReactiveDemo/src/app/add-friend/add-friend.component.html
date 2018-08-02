@@ -1,0 +1,29 @@
+<form [formGroup]="addFriendForm" (ngSubmit) = "send()">
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" class="form-control" formControlName="name" placeholder="Please enter the name">
+    <small *ngIf="name.invalid && name.touched">Name is required</small>
+  </div>
+
+  <div class="form-group">
+    <label>Email</label>
+    <input type="text" class="form-control" formControlName="email" placeholder="Please enter email address">
+    <small *ngIf="email.invalid && email.touched">Email is invalid</small>
+    <small *ngIf="email.pending && email.touched">Checking the Email</small>
+
+  </div>
+
+  <div class="form-group">
+    <label>Age Group</label>
+    <select class="form-control" formControlName="ageGroup">
+      <option class="form-control" value="child">Child</option>
+      <option class="form-control" value="teen">Teen</option>
+      <option class="form-control" value="adult">Adult</option>
+    </select>
+  </div>
+
+  <app-place formControlName="place"></app-place>
+  <br/><br/><br/><br/>
+  <button type="submit" class="btn btn-primary">Send</button>
+  <button type="button" (click)="reset()" class="btn btn-danger">Reset</button>
+</form>
