@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Custome} from './custome';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Custome } from './custome';
 
 @Component({
   selector: 'app-add-friend',
@@ -8,11 +8,14 @@ import {Custome} from './custome';
   styles: ['input.ng-invalid.ng-touched{border-color: red}']
 })
 export class AddFriendComponent implements OnInit {
-  public addFriendForm : FormGroup;
+  public addFriendForm: FormGroup;
+
+
+
   constructor(fb: FormBuilder) {
     this.addFriendForm = fb.group({
       name: [null, Validators.required],
-      email: [null,Validators.required,Custome.unique],
+      email: [null, Validators.required, Custome.unique],
       ageGroup: [null],
       place: null
     });
@@ -28,6 +31,7 @@ export class AddFriendComponent implements OnInit {
 
   send() {
     console.log(this.addFriendForm.value);
+    // throw new Error('new example error');
   }
 
   reset() {
